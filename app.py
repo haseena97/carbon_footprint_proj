@@ -62,20 +62,10 @@ def predict():
         ]])
 
         output=round(prediction[0],2)
-        if output < 1000:
-            st = 'A'
-        elif output < 1400 and output > 1000:
-            st = 'B'
-        elif output < 1800 and output > 1400:
-            st = 'C'
-        elif output < 2000 and output > 1800:
-            st = 'D'
-        else:
-            st = 'E'
-        print(st)
+        
             
-        return render_template('index.html',prediction_text="Your Carbon Emission is {} million/tonnes".format(output),
-                               range_text='Your Carbon Footprint Score is {}'.format(st))
+        return render_template('index.html',prediction_text="Your Carbon Emission is {} million/tonnes".format(output))
+                              
 
 
     return render_template("index.html")
