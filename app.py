@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 from flask_cors import cross_origin
 import pickle
-
+from sklearn.cluster import KMeans
 
 app = Flask(__name__)
 
@@ -30,9 +30,9 @@ def predict():
 
         # eff
         domestic_eff = float(request.form["Domestic_EFF"])
-        light_truck_eff = float(request.form["Light_Truck_EFF"])
+        passenger_eff = float(request.form["Passenger_Car_EFF"])
         short_wheel_eff = float(request.form["LDV_SWB_EFF"])
-        eff = domestic_eff + light_truck_eff + short_wheel_eff
+        eff = domestic_eff + passenger_eff + short_wheel_eff
         
         # ratio
         ratio_eff_age = age/eff
@@ -43,19 +43,39 @@ def predict():
         Demand_petroleum = float(request.form["Demand_petroleum_transportation)mil_lit"])
         cost = float(request.form["Average_MC/15000_miles(dollars)"])
         
+        features = [Demand_petroleum,cost,ratio_eff_age]
+
+        # Standardize
+        X_scaled = features
+        X_scaled = (X_scaled - X_scaled.mean(axis=0)) / X_scaled.std(axis=0)
+
+        kmeans = KMeans(n_clusters=10, n_init=10, random_state=0)
+        Cluster_Age = kmeans.fit_predict(X_scaled)
         
         # load model
         model = load_models()
         prediction=model.predict([[
            Combination_Truck_road_BTU, Railways_BTU, Water_BTU,
-       domestic_eff, light_truck_eff,  short_wheel_eff, passenger_age,
+       domestic_eff, passenger_eff,  short_wheel_eff, passenger_age,
        light_truck_age, light_vehicle_age,
-       Demand_petroleum, cost, ratio_eff_age
+       Demand_petroleum, cost, ratio_eff_age,Cluster_Age
         ]])
 
         output=round(prediction[0],2)
-
-        return render_template('index.html',prediction_text="Your Carbon Emission is {} million/tonnes".format(output))
+        if output < 1000:
+            st = 'A'
+        elif output < 1400 and output > 1000:
+            st = 'B'
+        elif output < 1800 and output > 1400:
+            st = 'C'
+        elif output < 2000 and output > 1800:
+            st = 'D'
+        else:
+            st = 'E'
+        print(st)
+            
+        return render_template('index.html',prediction_text="Your Carbon Emission is {} million/tonnes".format(output),
+                               range_text='Your Carbon Footprint Score is {}'.format(st))
 
 
     return render_template("index.html")
@@ -65,4 +85,6 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
