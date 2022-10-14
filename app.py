@@ -68,7 +68,7 @@ def predict():
             st = 'E'
         
             
-        return render_template('index.html',prediction_text="Your Carbon Emission is {} million/tonnes".format(output),
+        return render_template('index.html',prediction_text="Your Carbon Emission is {} million metric tons".format(output),
                                range_text='Your Carbon Footprint Score is {}'.format(st))
 
 
