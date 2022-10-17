@@ -47,13 +47,12 @@ def predict():
         long_BTU = float(request.form["LDV_LWB_road_BTU"])
         railways_BTU = float(request.form["Railways_BTU"])
         cost = float(request.form["Average_MC/15000_miles(dollars)"])
-        cost_petrol = cost* Demand_petroleum 
+        cost_petrol = cost/Demand_petroleum 
         
         # load model
         model = load_models()
-        prediction=model.predict([[
-           Combination_Truck_road_BTU, Jet_BTU, Bus_BTU, gasoline_BTU,long_BTU,railways_BTU,
-       avg_eff,  avg_age, Demand_petroleum, cost_petrol,ratio_eff_age, cost,short_wheel_eff
+        prediction=model.predict([[Jet_BTU, gasoline_BTU,long_BTU,Combination_Truck_road_BTU,
+             Bus_BTU,railways_BTU,short_wheel_eff,Demand_petroleum, cost,avg_eff,  avg_age, ratio_eff_age, cost_petrol
         ]])
 
         output=round(prediction[0],2)
