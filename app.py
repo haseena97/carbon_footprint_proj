@@ -47,7 +47,7 @@ def predict():
         long_BTU = float(request.form["LDV_LWB_road_BTU"])
         railways_BTU = float(request.form["Railways_BTU"])
         cost = float(request.form["Average_MC/15000_miles(dollars)"])
-        cost_petrol = cost/ Demand_petroleum 
+        cost_petrol = cost* Demand_petroleum 
         
         # load model
         model = load_models()
