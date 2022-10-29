@@ -8,10 +8,23 @@
 ## Codes and Resources Used
 **Python Version:** Python 3.9<br>
 **Packages:** numpy, matplotlib, seaborn, sklearn, xgboost, flask, json, pickle<br>
-**RFM Analysis Notebook:** https://www.kaggle.com/code/yaowenling/rfm-customer-segmentation/notebook<br>
-**Cluster-then-predict Article:** https://towardsdatascience.com/cluster-then-predict-for-classification-tasks-142fdfdc87d6<br>
 **Flask Productionization Github:** https://github.com/PlayingNumbers/ds_salary_proj/tree/master/FlaskAPI<br>
 **Flask Productionization Article:** https://towardsdatascience.com/productionize-a-machine-learning-model-with-flask-and-heroku
+
+## Data
+Overall, with each year, we got the following:
+
+- Year
+- Vehicles' Age
+- Vehicles' Efficiency
+- Vehicles' Fuel Consumption
+- Petroluem Demand
+- Average Maintenance Cost
+- 
+## Data Cleaning 
+Some of the features have more than 40% missing values, so I needed to impute them so that it was usable for our model. I also made the following changes and created the following variables:
+
+
 
 
 
