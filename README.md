@@ -29,6 +29,7 @@ Some of the features have more than 40% missing values, so I needed to impute th
 - Added a column for vehicles' average maintenance cost to petroluem demand ratio
 ## EDA
 I looked at the distributions of the data which are all numerical variables. Below are a few highlights:
+![image](https://user-images.githubusercontent.com/71859510/198867808-702dc964-35ee-4433-9f4c-1f4cd5e418b5.png)
 
 
 
