@@ -24,10 +24,11 @@ Overall, with each year, we got the following:
 ## Data Cleaning 
 Some of the features have more than 40% missing values, so I needed to impute them so that it was usable for our model. I also made the following changes and created the following variables:
 - Impute missing values using `front-fill`, `backward-fill`, `Multiple Imputation by Chained Equations (MICE)` and `spline interpolation`.
-- Made a new column for vehicles' average age ratio
-- Made a new column for vehicles' average efficiency
-- Made a new column for vehicles' age to efficiency ratio
-- Made a new column for vehicles' age to efficiency ratio
+- Made columns for vehicles' average age and average efficiency
+- Made column for vehicles' age to efficiency ratio
+- Added a column for vehicles' average maintenance cost to petroluem demand ratio
+## EDA
+I looked at the distributions of the data which are all numerical variables. Below are a few highlights:
 
 
 
