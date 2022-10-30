@@ -38,7 +38,7 @@ I looked at the distributions of the data which are all numerical variables. Bel
 ## Model Building
 First, I performed feature selection to address multicollinearity. I also split the data into train and tests sets with a test size of 20%.
 
-I tried different linear and tree-based models that I think would be a good fit for small dataset with outliers and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret.
+I tried different linear and tree-based models that I think would be a good fit for small dataset with outliers and evaluated them using Mean Absolute Error. I chose MAE because it is relatively easy to interpret.<br>
 Models:
 - Linear Regression
 - Lasso Regression
@@ -47,13 +47,15 @@ Models:
 - Theil-sen Regressor
 - RANSAC Regressor
 - XGBoost
-- Gradient-Boosting Regressor
-I used permutation importance on Huber Regressor to identify major contributors to carbon emission:
-![image](https://user-images.githubusercontent.com/71859510/198869353-23fc76db-b3bd-4e39-8aa6-ac1f943e14e5.png)<br>
+- Gradient-Boosting Regressor<br>
+
+I used `permutation importance` on Huber Regressor to identify major contributors to carbon emission:
+![image](https://user-images.githubusercontent.com/71859510/198869546-456a0173-00bd-45d8-bd29-855b4ac51894.png)
+
 I used permutation importance because it is model agnostic.
 ## Model Performance
 ![image](https://user-images.githubusercontent.com/71859510/198868514-15084160-80be-48c7-ae62-3546a0ac8067.png)<br>
-The Huber Regressor model far outperformed the other approaches on the test and validation sets. Other models heavily overfit the data.
+The **Huber Regressor model** far outperformed the other approaches on the test and validation sets. Other models heavily overfit the data.
 ## Productionization
 In this step, I built a flask API endpoint that was hosted on [Heroku](https://carbon-footprint-prediction.herokuapp.com/) by following along with the TDS tutorial in the reference section above. The API endpoint takes in a request with a list of values input by client and returns an estimated carbon emission.
 
