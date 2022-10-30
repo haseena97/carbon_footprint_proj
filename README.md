@@ -47,11 +47,12 @@ Models:
 - RANSAC Regressor
 - XGBoost
 - Gradient-Boosting Regressor
+- 
 ## Model Performance
 ![image](https://user-images.githubusercontent.com/71859510/198868514-15084160-80be-48c7-ae62-3546a0ac8067.png)
 The Huber Regressor model far outperformed the other approaches on the test and validation sets. Other models heavily overfit the data.
 ## Productionization
-
+In this step, I built a flask API endpoint that was hosted on [Heroku](https://carbon-footprint-prediction.herokuapp.com/) by following along with the TDS tutorial in the reference section above. The API endpoint takes in a request with a list of values input by client and returns an estimated carbon emission.
 
 
 
